@@ -16,7 +16,7 @@ const TaskTodo: React.FC<TaskProps> = ({ task }) => {
 
   const deleteTask = async (id: string): Promise<void> => {
     await deleteTodo(id);
-    await contextSearch.fetchData();
+    contextSearch.fetchData();
   };
 
   const closeModal = () => {
@@ -31,14 +31,14 @@ const TaskTodo: React.FC<TaskProps> = ({ task }) => {
           <div className="border px-1 bg-yellow-300 shadow cursor-pointer" onClick={()=>setIsShow(true)}>Edit</div>
           <div
             className="border px-1 bg-red-300 shadow cursor-pointer"
-            onClick={(id: string):Promise<void> => deleteTask(task.id)}
+            onClick={() => deleteTask(task.id)}
           >
             Delete
           </div>
         </div>
       </div>
 
-      <ModalEdit todo={task} isShow={isShow} closeModal={closeModal}> </ModalEdit>
+      <ModalEdit todo={task} isShow={isShow} closeModal={closeModal} />
     </div>
   );
 };

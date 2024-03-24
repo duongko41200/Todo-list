@@ -9,16 +9,20 @@ interface TypeUdateTask {
   todo: ITask;
   isShow: boolean;
   closeModal: () => void;
+  
 }
 
-const ModalEdit: React.FC<TypeUdateTask> = ({ closeModal, ...props }) => {
+const ModalEdit: React.FC<TypeUdateTask> = ({ closeModal, todo,isShow }) => {
 
 	const context = useContext(ThemeContext)
-  const [taskUpdate, setTaskUpdate] = useState<ITask>();
+  const [taskUpdate, setTaskUpdate] = useState<ITask>({
+    id: '',
+    text:''
+  });
 
 	const changeInput = (e: any) => {
 		
-		setTaskUpdate({id:props.todo.id,text:e.target.value})
+		setTaskUpdate({id:todo.id,text:e.target.value})
 	};
 	
 	
@@ -32,13 +36,13 @@ const ModalEdit: React.FC<TypeUdateTask> = ({ closeModal, ...props }) => {
 	};
 
   useEffect(() => {
-    setTaskUpdate(props.todo);
+    setTaskUpdate(todo);
   }, []);
   return (
 	  <>
 		  
-		  {props.isShow && (        <div className="w-[100vw] h-[100vh] absolute top-0 left-0 flex items-center justify-center z-20 bg-gray-100 opacity-10"></div>)}
-      {props.isShow && (
+		  {isShow && (        <div className="w-[100vw] h-[100vh] absolute top-0 left-0 flex items-center justify-center z-20 bg-gray-100 opacity-10"></div>)}
+      {isShow && (
 
           <div className="w-[50%] flex flex-col justify-between  min-h-[20%]  bg-gray-200 z-20 absolute  px-2 opacity-100 shadow-xl rounded">
             <div className="flex justify-end mt-2">

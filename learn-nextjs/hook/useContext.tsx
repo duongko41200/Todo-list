@@ -2,8 +2,18 @@ import { createContext, useEffect, useState } from 'react';
 
 import { TypeTask } from '@/app/home/todo/TodoList';
 import { getAllTodos } from '@/apis/api';
-
-const ThemeContext = createContext<object>({});
+interface ThemeContextType {
+  tasks: TypeTask[];
+  taskSearch: TypeTask[];
+  SearchTask: (key: string) => void;
+  fetchData: () => void;
+}
+const ThemeContext = createContext<ThemeContextType>({
+  tasks: [],
+  taskSearch: [],
+  SearchTask: () => {},
+  fetchData: () => {},
+});
 
 const ThemeProvide = ({
   children,
@@ -41,18 +51,11 @@ const ThemeProvide = ({
     setTaskSearch(resultSearch);
   };
 
-  interface MyData {
-    tasks: object;
-    taskSearch: object;
-    SearchTask: (key: string) => void;
-    fetchData:()=>void
-  }
-
-  const value: MyData = {
+  const value: ThemeContextType = {
     tasks: tasks, // Giả sử tasks là một mảng các Task
     taskSearch: taskSearch,
     SearchTask,
-    fetchData
+    fetchData,
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
