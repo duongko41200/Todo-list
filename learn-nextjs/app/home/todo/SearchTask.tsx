@@ -26,7 +26,13 @@ function SearchTask() {
   };
 
   const addNewTask = async(): Promise<void> => {
+    let valueTodo: ITask = {
+      id: `${Math.random()}`,
+      text: inputTask,
+    };
 
+    await addTodo(valueTodo);
+    contextSearch.fetchData();
   };
 
   return (
