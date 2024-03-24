@@ -6,10 +6,11 @@ const AboutPasge = () => {
   return (
     <div className={`h-[calc(100vh_-_41px)] bg-white`}>
       <div className="flex justify-center mb-3">
-        <div className="title">Danh sách công việc</div>
+        <div className="title">Danh sách</div>
       </div>
 
       <TodoTheme />
+
     </div>
   );
 };
