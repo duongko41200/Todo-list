@@ -32,7 +32,8 @@ function SearchTask() {
     };
 
     await addTodo(valueTodo);
-    await contextSearch.fetchData();
+    contextSearch.fetchData();
+    
   };
 
   return (
