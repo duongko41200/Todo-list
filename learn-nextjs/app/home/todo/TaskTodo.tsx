@@ -39,6 +39,7 @@ const TaskTodo: React.FC<TaskProps> = ({ task }) => {
       </div>
 
       <ModalEdit todo={task} isShow={isShow} closeModal={closeModal} />
+      
     </div>
   );
 };
